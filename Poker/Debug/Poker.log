@@ -1,0 +1,7 @@
+﻿  Croupier.cpp
+C:\Users\student\source\repos\Poker\Poker\Croupier.cpp(54,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\student\source\repos\Poker\Poker\Croupier.cpp(60,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\student\source\repos\Poker\Poker\Croupier.cpp(62,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\student\source\repos\Poker\Poker\Croupier.cpp(71,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\student\source\repos\Poker\Poker\Croupier.cpp(47,6): warning C4101: score: неиспользованная локальная переменная
+  Poker.vcxproj -> C:\Users\student\source\repos\Poker\Debug\Poker.exe
