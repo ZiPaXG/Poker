@@ -24,4 +24,3 @@ public:
 	vector<Cards>getDeck();
 	void setBet(int a); // делает ставку
 };
-

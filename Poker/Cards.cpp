@@ -71,3 +71,8 @@ int Cards::getName()
 {
 	return name;
 }
+
+int Cards::getSuits()
+{
+	return suits;
+}

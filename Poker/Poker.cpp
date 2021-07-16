@@ -7,12 +7,18 @@
 
 using namespace std;
 
+//enum Combination
+//{
+//    High = 1, Pair, TwoPairs, Three, Straight, Flush, FullHouse, Four, StraightFlush, RoyalFlush
+//};
+
 int main()
 {
     srand(time(0));
 
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
+    int score;
 
     vector<Cards> card1;
     Player pl1 = Player("Daniel", 1000);
@@ -26,5 +32,6 @@ int main()
 
     pl1.getDeck();
 
-    c1.checkCombination(pl1.getDeck(), c1.getDeckCr(), 1);
+    score = c1.checkCombination(pl1.getDeck(), c1.getDeckCr(), 1);
+    c1.showCombination(score);
 }

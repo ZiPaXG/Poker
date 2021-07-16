@@ -16,4 +16,5 @@ public:
 	};
 	string getCards();
 	int getName();
+	int getSuits();
 };

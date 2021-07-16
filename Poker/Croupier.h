@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <algorithm>
 #include "Cards.h"
 
 enum Combination
@@ -17,5 +18,13 @@ public:
 	vector<Cards> getRandCard(); // выдает 2 карты игроку
 	void setDeckCr(); // создает 5 карт на столе
 	vector<Cards>getDeckCr();
-	int checkCombination(vector<Cards>deck, vector<Cards>deckCr, int a); // 1 - колода игрока, 2 - колода крупье
+	void showDeck(vector<Cards>v1);
+	int checkCombination(vector<Cards>deck, vector<Cards>deckCr, int a); // 1 - колода игрока, 2 - колода крупье, 3 - фаза игры
+	void showCombination(int score);
+	int RoyalFlash(vector<Cards>combo);
+	int CardPair(vector<Cards>combo);
+	int StreetFlash(vector<Cards>combo);
+	int Care(vector<Cards>combo);
+	int FullHous(vector<Cards>combo);
+	int HighCard(vector<Cards>combo);
 };
