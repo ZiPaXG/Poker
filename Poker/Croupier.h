@@ -19,8 +19,10 @@ public:
 	void setDeckCr(); // создает 5 карт на столе
 	vector<Cards>getDeckCr();
 	void showDeck(vector<Cards>v1);
-	int checkCombination(vector<Cards>deck, vector<Cards>deckCr, int a); // 1 - колода игрока, 2 - колода крупье, 3 - фаза игры
+	vector<Cards>ComboCard(vector<Cards> combo, vector<Cards>deckCr, int a);
+	int checkCombination(vector<Cards>combo); // 1 - колода игрока, 2 - колода крупье, 3 - фаза игры
 	void showCombination(int score);
+	//int Street(vector<Cards> combo);
 	int RoyalFlash(vector<Cards>combo);
 	int CardPair(vector<Cards>combo);
 	int StreetFlash(vector<Cards>combo);

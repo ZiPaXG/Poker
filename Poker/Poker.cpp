@@ -7,18 +7,15 @@
 
 using namespace std;
 
-//enum Combination
-//{
-//    High = 1, Pair, TwoPairs, Three, Straight, Flush, FullHouse, Four, StraightFlush, RoyalFlush
-//};
-
 int main()
 {
     srand(time(0));
 
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    int score;
+    
+    int score = 0; //переменная, которая показывает насколько мощная комбинация
+    int point = 0; // если score == 1 - сюда записываем номер высокой карты
 
     vector<Cards> card1;
     Player pl1 = Player("Daniel", 1000);
@@ -32,6 +29,13 @@ int main()
 
     pl1.getDeck();
 
-    score = c1.checkCombination(pl1.getDeck(), c1.getDeckCr(), 1);
+    vector<Cards> combo = pl1.getDeck();
+    combo = c1.ComboCard(combo, c1.getDeckCr(), 1);
+    score = c1.checkCombination(combo);
     c1.showCombination(score);
+
+    if (score == 1)
+    {
+        point = c1.HighCard(combo);
+    }
 }

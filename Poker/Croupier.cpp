@@ -52,17 +52,13 @@ void Croupier::showDeck(vector<Cards> v1)
 	cout << endl;
 }
 
-int Croupier::checkCombination(vector<Cards> deck, vector<Cards> deckCr, int a)
+vector<Cards> Croupier::ComboCard(vector<Cards> combo, vector<Cards> deckCr, int a)
 {
-	// 10 вариантов
-	vector<Cards> combo = deck;
-	int score = 0;
-
 	switch (a)
 	{
 	case 1:
-		combo.insert(combo.end(), deckCr.begin(), deckCr.end()-2);
-		
+		combo.insert(combo.end(), deckCr.begin(), deckCr.end() - 2);
+
 		// сортировка пузырьком
 		for (int i = 0; i < combo.size() - 1; i++)
 		{
@@ -70,16 +66,23 @@ int Croupier::checkCombination(vector<Cards> deck, vector<Cards> deckCr, int a)
 			{
 				if (combo[j].getName() > combo[j + 1].getName())
 				{
-					iter_swap(combo.begin()+j, combo.begin()+j+1);
+					iter_swap(combo.begin() + j, combo.begin() + j + 1);
 				}
 			}
 		}
-
-		showDeck(combo);
-		score = RoyalFlash(combo);
-		cout << score << endl;
 		break;
 	}
+	
+	return combo;
+}
+
+int Croupier::checkCombination(vector<Cards> combo)
+{
+	// 10 вариантов
+	int score = 0;
+
+	//showDeck(combo);
+	score = RoyalFlash(combo);
 
 	return score;
 }
@@ -121,11 +124,36 @@ void Croupier::showCombination(int score)
 	}
 }
 
+//int Croupier::Street(vector<Cards> combo)
+//{
+//	int point = 0;
+//	int t = 0;
+//
+//	// проверка на одинаковые значения в стрит 
+//	for (int i = 0; i < combo.size(); i++)
+//	{
+//		for (int j = 0; j < 1; j++)
+//		{
+//			if (combo[i].getName() == combo[j].getName() - 1)
+//			{
+//				point++;
+//			}
+//		}
+//	}
+//	
+//	if (point == 4)
+//	{
+//		return 5;
+//	}
+//
+//}
+
 int Croupier::RoyalFlash(vector<Cards> combo)
 {
 	int t = 0; // счетчик
 	int point = 0;
 	int point1 = 0;
+	int point2 = 0;
 	int sizeVec = combo.size();
 
 	// проверка на одинаковые масти
@@ -150,23 +178,46 @@ int Croupier::RoyalFlash(vector<Cards> combo)
 		}
 	}
 
+	// проверка на обычный стрит
+	for (int i = 0; i < combo.size(); i++)
+	{
+		for (int j = 0; j < 1; j++)
+		{
+			if (combo[i].getName() == combo[j].getName() - 1)
+			{
+				point2++;
+			}
+		}
+	}
+
 	// проверка на сам роял флеш
 	if (point == point1 + 1)
 	{
 		return 10;
 	}
 
-	//возвращает стрит
+	//возвращает "королевский" стрит
 	else if (point == 5 && point1 != 4)
 	{
 		return 5;
 	}
 
-	// здесь спускается на уровень стрит флеша
-	else if (point != 5 && point1 == 4)
+	//// здесь спускается на уровень стрит флеша
+	//else if (point != 5 && point1 == 4)
+	//{
+	//	t = StreetFlash(combo);
+	//	return t;
+	//}
+
+	else if (point != 5 && point1 == 4 && point2 == 4)
 	{
 		t = StreetFlash(combo);
 		return t;
+	}
+
+	else if (point != 5 && point1 != 4 && point2 == 4)
+	{
+		return 5;
 	}
 
 	// если нет совпадений
@@ -223,7 +274,7 @@ int Croupier::Care(vector<Cards> combo)
 	}
 
 	sort(point.begin(), point.end());
-	
+
 	//проверка на каре
 	if (point[combo.size() - 1] == 3)
 	{
@@ -241,6 +292,12 @@ int Croupier::Care(vector<Cards> combo)
 	{
 		t = CardPair(combo);
 		return t;
+	}
+
+	// поиск наивысшей карты
+	else if (point[combo.size() - 1] == 0)
+	{
+		return 1;
 	}
 }
 
@@ -311,7 +368,7 @@ int Croupier::CardPair(vector<Cards> combo)
 		}
 	}
 
-	// проверка на две пару
+	// проверка на две пары
 	if (point == point1)
 	{
 		return 3;
@@ -323,12 +380,6 @@ int Croupier::CardPair(vector<Cards> combo)
 		return 2;
 	}
 
-	// поиск наивысшей карты
-	else if (point != 1 && point1 != 1)
-	{
-		t = HighCard(combo);
-		return t;
-	}
 }
 
 int Croupier::HighCard(vector<Cards> combo)
@@ -343,5 +394,5 @@ int Croupier::HighCard(vector<Cards> combo)
 		}
 	}
 
-	return 1;
+	return point;
 }

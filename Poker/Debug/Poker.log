@@ -1,17 +1,21 @@
 ﻿  Croupier.cpp
-C:\Users\student\source\repos\Poker\Poker\Croupier.cpp(48,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\student\source\repos\Poker\Poker\Croupier.cpp(67,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\student\source\repos\Poker\Poker\Croupier.cpp(69,22): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\student\source\repos\Poker\Poker\Croupier.cpp(185,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\student\source\repos\Poker\Poker\Croupier.cpp(214,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\student\source\repos\Poker\Poker\Croupier.cpp(216,25): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\student\source\repos\Poker\Poker\Croupier.cpp(252,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\student\source\repos\Poker\Poker\Croupier.cpp(254,25): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\student\source\repos\Poker\Poker\Croupier.cpp(281,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\student\source\repos\Poker\Poker\Croupier.cpp(283,25): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\student\source\repos\Poker\Poker\Croupier.cpp(298,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\student\source\repos\Poker\Poker\Croupier.cpp(300,25): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\student\source\repos\Poker\Poker\Croupier.cpp(338,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\student\source\repos\Poker\Poker\Croupier.cpp(245): warning C4715: Croupier::Care: значение возвращается не при всех путях выполнения
-C:\Users\student\source\repos\Poker\Poker\Croupier.cpp(332): warning C4715: Croupier::CardPair: значение возвращается не при всех путях выполнения
-  Poker.vcxproj -> C:\Users\student\source\repos\Poker\Debug\Poker.exe
+C:\Users\shepe\source\repos\Poker\Poker\Croupier.cpp(48,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker\Poker\Croupier.cpp(63,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker\Poker\Croupier.cpp(65,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker\Poker\Croupier.cpp(182,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker\Poker\Croupier.cpp(236,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker\Poker\Croupier.cpp(265,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker\Poker\Croupier.cpp(267,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker\Poker\Croupier.cpp(309,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker\Poker\Croupier.cpp(311,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker\Poker\Croupier.cpp(338,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker\Poker\Croupier.cpp(340,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker\Poker\Croupier.cpp(355,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker\Poker\Croupier.cpp(357,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker\Poker\Croupier.cpp(389,20): warning C4018: <: несоответствие типов со знаком и без знака
+  Poker.cpp
+C:\Users\shepe\source\repos\Poker\Poker\Poker.cpp(12,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Создание кода...
+C:\Users\shepe\source\repos\Poker\Poker\Croupier.cpp(383): warning C4715: Croupier::CardPair: значение возвращается не при всех путях выполнения
+C:\Users\shepe\source\repos\Poker\Poker\Croupier.cpp(302): warning C4715: Croupier::Care: значение возвращается не при всех путях выполнения
+  Poker.vcxproj -> C:\Users\shepe\source\repos\Poker\Debug\Poker.exe
