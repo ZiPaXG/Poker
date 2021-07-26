@@ -40,4 +40,5 @@ public:
 	vector<Player> SetBet1(vector<Player>players, int n, float bet);
 	vector<Player> SetBet2(vector<Player>players, int n, float bet);
 	void getWin(vector<int>score, vector<int>point, vector <Player> players);
+	vector<int> getDraw(vector<int> score, vector <Player> players, vector <int> id);
 };

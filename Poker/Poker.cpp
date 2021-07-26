@@ -150,7 +150,7 @@ int main()
     // подведение итогов
     for (int i = 0; i < score.size(); i++)
     {
-        cout << score[i] << endl;
+        cout << point[i] << endl;
     }
     
     c1.getWin(score, point, players);

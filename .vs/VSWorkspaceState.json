@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Poker"
   ],
-  "SelectedNode": "\\Poker.sln",
+  "SelectedNode": "\\Poker\\Poker.cpp",
   "PreviewInSolutionExplorer": false
 }

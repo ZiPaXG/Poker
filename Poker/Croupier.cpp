@@ -664,18 +664,136 @@ vector<Player> Croupier::SetBet2(vector<Player> players, int n, float bet)
 void Croupier::getWin(vector<int> score, vector<int> point, vector <Player> players)
 {
 	int win = 0;
-	int winner = 0;
+	int winid = 0;
+	vector<int> id;
+
 	for (int i = 0; i < score.size(); i++)
 	{
 		if (win < score[i])
 		{
 			win = score[i];
-			winner = i;
+			winid = i;
+		}
+		
+		else if (win == score[i])
+		{
+			id.push_back(winid);
+			id.push_back(i);
 		}
 	}
 
-	cout << "Победил " << players[winner].getNameP() << "!!!" << endl;
-	players[winner].setMoney(getBank());
-	bank = 0;
-	cout << "Ваш счёт: " << players[winner].getMoney() << endl;
+	if (win > score[id[0]])
+	{
+		cout << "Победил " << players[id[0]].getNameP() << "!!!" << endl;
+		players[id[0]].setMoney(getBank());
+		bank = 0;
+		cout << "Ваш счёт: " << players[id[0]].getMoney() << endl;
+	}
+
+	else
+	{
+		id = getDraw(score, players, id);
+		if (id.size() > 1)
+		{
+			bank /= id.size();
+			for (int i = 0; i < id.size(); i++)
+			{
+				players[id[i]].setMoney(bank);
+			}
+			bank = 0;
+		}
+
+		else
+		{
+			cout << "Победил " << players[id[0]].getNameP() << "!!!" << endl;
+			players[id[0]].setMoney(getBank());
+			bank = 0;
+			cout << "Ваш счёт: " << players[id[0]].getMoney() << endl;
+		}
+	}
+}
+
+vector<int> Croupier::getDraw(vector<int> score, vector<Player> players, vector <int> id)
+{
+	vector<Cards> cd;
+	vector<Cards> cd1;
+	vector<int> dubl;
+
+	if (score[id[0]] > 4)
+	{
+		bank /= id.size();
+		for (int i = 0; i < id.size(); i++)
+		{
+			players[id[i]].setMoney(bank);
+		}
+		bank = 0;
+	}
+
+	else
+	{
+		for (int i = 0; i < id.size() - 1; i++)
+		{
+			cd = players[id[i]].getDeck();
+			cd1 = players[id[i + 1]].getDeck();
+			
+			// сортировка пузырьком
+			for (int i = 0; i < cd.size() - 1; i++)
+			{
+				for (int j = 0; j < cd.size() - i - 1; j++)
+				{
+					if (cd[j].getName() > cd[j + 1].getName())
+					{
+						iter_swap(cd.begin() + j, cd.begin() + j + 1);
+					}
+				}
+			}
+
+			for (int i = 0; i < cd1.size() - 1; i++)
+			{
+				for (int j = 0; j < cd1.size() - i - 1; j++)
+				{
+					if (cd1[j].getName() > cd1[j + 1].getName())
+					{
+						iter_swap(cd1.begin() + j, cd1.begin() + j + 1);
+					}
+				}
+			}
+
+			for (int j = cd.size() - 1; j >= 0; j--)
+			{
+				if (cd[j].getName() < cd1[j].getName())
+				{
+					if (!dubl.empty())
+					{
+						dubl.clear();
+					}
+
+					id.erase(id.begin() + i);
+				}
+
+				else if (cd[j].getName() > cd1[j].getName())
+				{
+					if (!dubl.empty())
+					{
+						dubl.clear();
+					}
+
+					id.erase(id.begin() + i + 1);
+				}
+
+				else if (cd[j].getName() == cd1[j].getName())
+				{
+					dubl.push_back(id[i]);
+				}
+			}
+
+			if (dubl.empty())
+			{
+				i = 0;
+			}
+
+		}
+	}
+
+	return id;
 }

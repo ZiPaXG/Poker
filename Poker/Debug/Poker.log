@@ -22,16 +22,13 @@ C:\Users\ФЕНИКС\source\repos\Poker\Poker\Croupier.cpp(543,39): warning C42
 C:\Users\ФЕНИКС\source\repos\Poker\Poker\Croupier.cpp(569,39): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
 C:\Users\ФЕНИКС\source\repos\Poker\Poker\Croupier.cpp(611,39): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
 C:\Users\ФЕНИКС\source\repos\Poker\Poker\Croupier.cpp(637,39): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
-C:\Users\ФЕНИКС\source\repos\Poker\Poker\Croupier.cpp(668,20): warning C4018: <: несоответствие типов со знаком и без знака
-  Player.cpp
-C:\Users\ФЕНИКС\source\repos\Poker\Poker\Player.cpp(5,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\ФЕНИКС\source\repos\Poker\Poker\Player.cpp(13,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\ФЕНИКС\source\repos\Poker\Poker\Player.cpp(135,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\ФЕНИКС\source\repos\Poker\Poker\Croupier.cpp(673,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\ФЕНИКС\source\repos\Poker\Poker\Croupier.cpp(711,21): warning C4018: <: несоответствие типов со знаком и без знака
   Poker.cpp
 C:\Users\ФЕНИКС\source\repos\Poker\Poker\Poker.cpp(14,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
 C:\Users\ФЕНИКС\source\repos\Poker\Poker\Poker.cpp(151,23): warning C4018: <: несоответствие типов со знаком и без знака
 C:\Users\ФЕНИКС\source\repos\Poker\Poker\Poker.cpp(23,9): warning C4101: counter: неиспользованная локальная переменная
   Создание кода...
-C:\Users\ФЕНИКС\source\repos\Poker\Poker\Croupier.cpp(476): warning C4715: Croupier::CardPair: значение возвращается не при всех путях выполнения
 C:\Users\ФЕНИКС\source\repos\Poker\Poker\Croupier.cpp(395): warning C4715: Croupier::Care: значение возвращается не при всех путях выполнения
+C:\Users\ФЕНИКС\source\repos\Poker\Poker\Croupier.cpp(476): warning C4715: Croupier::CardPair: значение возвращается не при всех путях выполнения
   Poker.vcxproj -> C:\Users\ФЕНИКС\source\repos\Poker\Debug\Poker.exe
