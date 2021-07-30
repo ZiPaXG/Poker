@@ -217,30 +217,6 @@ void Croupier::showCombination(int score)
 	}
 }
 
-//int Croupier::Street(vector<Cards> combo)
-//{
-//	int point = 0;
-//	int t = 0;
-//
-//	// проверка на одинаковые значения в стрит 
-//	for (int i = 0; i < combo.size(); i++)
-//	{
-//		for (int j = 0; j < 1; j++)
-//		{
-//			if (combo[i].getName() == combo[j].getName() - 1)
-//			{
-//				point++;
-//			}
-//		}
-//	}
-//	
-//	if (point == 4)
-//	{
-//		return 5;
-//	}
-//
-//}
-
 int Croupier::RoyalFlash(vector<Cards> combo)
 {
 	int t = 0; // счетчик
@@ -248,6 +224,11 @@ int Croupier::RoyalFlash(vector<Cards> combo)
 	int point1 = 0;
 	int point2 = 0;
 	int sizeVec = combo.size();
+
+	for (int i = 0; i < combo.size(); i++)
+	{
+		cout << combo[i].getCards() << endl;
+	}
 
 	// проверка на одинаковые масти
 	for (int i = 0; i < 1; i++)
@@ -260,7 +241,7 @@ int Croupier::RoyalFlash(vector<Cards> combo)
 			}
 		}
 	}
-
+	cout << point1 << endl;
 	// проверка на одинаковые значения в роял флеше
 	for (int i = 10; i < 15; i++)
 	{
@@ -270,21 +251,21 @@ int Croupier::RoyalFlash(vector<Cards> combo)
 			point++;
 		}
 	}
-
+	cout << point << endl;
 	// проверка на обычный стрит
-	for (int i = 0; i < combo.size(); i++)
+	for (int i = 0; i < 1; i++)
 	{
-		for (int j = 0; j < 1; j++)
+		for (int j = i + 1; j < combo.size(); j++)
 		{
-			if (combo[i].getName() == combo[j].getName() - 1)
+			if (combo[i].getName() == combo[j].getName() - j)
 			{
 				point2++;
 			}
 		}
 	}
-
+	cout << point2 << endl;
 	// проверка на сам роял флеш
-	if (point == point1 + 1)
+	if (point == 5 && point == 4)
 	{
 		return 10;
 	}
@@ -295,17 +276,14 @@ int Croupier::RoyalFlash(vector<Cards> combo)
 		return 5;
 	}
 
-	//// здесь спускается на уровень стрит флеша
-	//else if (point != 5 && point1 == 4)
-	//{
-	//	t = StreetFlash(combo);
-	//	return t;
-	//}
-
 	else if (point != 5 && point1 == 4 && point2 == 4)
 	{
-		t = StreetFlash(combo);
-		return t;
+		return 9;
+	}
+
+	else if (point != 5 && point1 == 4 && point2 != 4)
+	{
+		return 6;
 	}
 
 	else if (point != 5 && point1 != 4 && point2 == 4)
@@ -318,34 +296,6 @@ int Croupier::RoyalFlash(vector<Cards> combo)
 	{
 		t =  Care(combo);
 		return t;
-	}
-}
-
-int Croupier::StreetFlash(vector<Cards> combo)
-{
-	int point = 0;
-
-	// проверка на одинаковые значения в стрит флеше
-	for (int i = 0; i < combo.size(); i++)
-	{
-		for (int j = i + 1; j < i + 2; j++)
-		{
-			if (combo[i].getName() == combo[j].getName()-1)
-			{
-				point++;
-			}
-		}
-	}
-	
-	// проверка на стрит флеш
-	if (point == 4)
-	{
-		return 9;
-	}
-
-	else
-	{
-		return 6;
 	}
 }
 
@@ -525,60 +475,89 @@ float Croupier::getAllBet()
 	return allBet;
 }
 
-vector<Player> Croupier::SetBet1(vector<Player> players, int n, float bet)
+vector<Player> Croupier::SetBet1(vector<Player> players, int n, int bet)
 {
 	for (;;)
 	{
 		int counter = 0;
-		for (int i = 0; i < n; i++)
+		for (int i = 0; i < players.size(); i++)
 		{
-			cout << "Ставка: " << getAllBet() << endl;
-			cout << i + 1 << " игрок - введите 1 - Колл, введите 2 - Рейз " << endl;
-			cout << "введите 3 - Ва-банк: " << endl;
-			cin >> bet;
-			if (bet == 2)
+			if (players[i].getMoney() != 0)
 			{
-				if (players[i].getMoney() > getAllBet())
-				{
-					players[i] = players[i].checkBet(bet, players[i], getAllBet());
-					setAllBet(players);
-				}
+				cout << "На кону: " << getBank() << endl;
+				cout << "Ставка: " << getAllBet() << endl;
+				cout << players[i].getNameP() << " игрок - введите 1 - Колл, введите 2 - Рейз " << endl;
+				cout << "введите 3 - Ва-банк, введите 4 - Фолд (сброс карт): " << endl;
+				cin >> bet;
 
-				else
+				switch (bet)
 				{
-					cout << "У вас недостаточно денег для повышения ставки! Введите 1 - Колл, введите 2 - Ва-банк: " << endl;
-					cin >> bet;
-					if (bet == 1)
+				case 1:
+				{
+					if (players[i].getMoney() > getAllBet())
 					{
 						players[i] = players[i].Call(players[i], getAllBet());
 						setAllBet(players);
 					}
 
-					else if (bet == 2)
+					else
 					{
+						cout << "У вас недостаточно денег для коллирования! Вы идёте Ва-банк! " << endl;
 						players[i] = players[i].VaBank(players[i]);
-						setAllBet(players);
 					}
 				}
-			}
+				break;
 
-			else if (bet == 1)
-			{
-				if (players[i].getMoney() > getAllBet())
+				case 2:
 				{
-					players[i] = players[i].checkBet(bet, players[i], getAllBet());
+					if (players[i].getMoney() > getAllBet())
+					{
+						players[i] = players[i].Raise(players[i], getAllBet());
+						setAllBet(players);
+					}
+
+					else
+					{
+						cout << "У вас недостаточно денег для повышения ставки! Введите 1 - Колл, введите 2 - Ва-банк: " << endl;
+						cin >> bet;
+						if (bet == 1)
+						{
+							players[i] = players[i].Call(players[i], getAllBet());
+							setAllBet(players);
+						}
+
+						else if (bet == 2)
+						{
+							players[i] = players[i].VaBank(players[i]);
+							setAllBet(players);
+						}
+					}
+				}
+				break;
+
+				case 3:
+				{
+					players[i] = players[i].VaBank(players[i]);
 					setAllBet(players);
 				}
+				break;
 
-				else
+				case 4:
 				{
-					cout << "У вас недостаточно денег для коллирования! Вы идёте Ва-банк! " << endl;
-					players[i] = players[i].VaBank(players[i]);
+					players = players[i].Fold(players, i);
+					i -= 1;
+				}
+				break;
 				}
 			}
-		}
 
-		for (int i = 0; i < n - 1; i++)
+			else
+			{
+				cout << "Игрок " << players[i].getNameP() << ", у вас нету денег для ставок" << endl;
+			}
+			
+		}
+		for (int i = 0; i < players.size() - 1; i++)
 		{
 			cout << players[i].getBet() << " " << players[i + 1].getBet() << endl;
 			if (players[i].getBet() == players[i + 1].getBet())
@@ -587,161 +566,245 @@ vector<Player> Croupier::SetBet1(vector<Player> players, int n, float bet)
 			}
 		}
 
-		if (counter == n - 1)
+		if (counter == players.size() - 1)
 			break;
 	}
 	return players;
 }
 
-vector<Player> Croupier::SetBet2(vector<Player> players, int n, float bet)
+vector<Player> Croupier::SetBet2(vector<Player> players, int n, int bet)
 {
 	for (;;)
 	{
 		int counter = 0;
-		for (int i = 0; i < n; i++)
+		for (int i = 0; i < players.size(); i++)
 		{
-			cout << "Ставка: " << getAllBet() << endl;
-			cout << i + 1 << " игрок - введите 1 - Колл/Чек, введите 2 - Рейз " << endl;
-			cout << "введите 3 - Ва-банк: " << endl;
-			cin >> bet;
-			if (bet == 2)
+			if (players[i].getMoney() != 0)
 			{
-				if (players[i].getMoney() > getAllBet())
+				cout << "На кону: " << getBank() << endl;
+				cout << "Ставка: " << getAllBet() << endl;
+				cout << players[i].getNameP() << " игрок - введите 1 - Колл/Чек, введите 2 - Рейз " << endl;
+				cout << "введите 3 - Ва-банк, введите 4 - Фолд (сброс карт): " << endl;
+				cin >> bet;
+				switch (bet)
 				{
-					players[i] = players[i].checkBet(bet, players[i], getAllBet());
-					setAllBet(players);
-				}
-
-				else
+				case 1:
 				{
-					cout << "У вас недостаточно денег для повышения ставки! Введите 1 - Колл, введите 2 - Ва-банк: " << endl;
-					cin >> bet;
-					if (bet == 1)
+					if (players[i].getMoney() > getAllBet())
 					{
 						players[i] = players[i].Call(players[i], getAllBet());
 						setAllBet(players);
 					}
 
-					else if (bet == 2)
+					else
 					{
+						cout << "У вас недостаточно денег для коллирования! Вы идёте Ва-банк! " << endl;
 						players[i] = players[i].VaBank(players[i]);
-						setAllBet(players);
 					}
 				}
-			}
+				break;
 
-			else if (bet == 1)
-			{
-				if (players[i].getMoney() > getAllBet())
+				case 2:
 				{
-					players[i] = players[i].checkBet(bet, players[i], getAllBet());
+					if (players[i].getMoney() > getAllBet())
+					{
+						players[i] = players[i].Raise(players[i], getAllBet());
+						setAllBet(players);
+					}
+
+					else
+					{
+						cout << "У вас недостаточно денег для повышения ставки! Введите 1 - Колл, введите 2 - Ва-банк: " << endl;
+						cin >> bet;
+						if (bet == 1)
+						{
+							players[i] = players[i].Call(players[i], getAllBet());
+							setAllBet(players);
+						}
+
+						else if (bet == 2)
+						{
+							players[i] = players[i].VaBank(players[i]);
+							setAllBet(players);
+						}
+					}
+				}
+				break;
+
+				case 3:
+				{
+					players[i] = players[i].VaBank(players[i]);
 					setAllBet(players);
 				}
+				break;
 
-				else
+				case 4:
 				{
-					cout << "У вас недостаточно денег для коллирования! Вы идёте Ва-банк! " << endl;
-					players[i] = players[i].VaBank(players[i]);
+					players = players[i].Fold(players, i);
+					i -= 1;
 				}
+				break;
+				}
+			}
+			
+			else
+			{
+				cout << "Игрок " << players[i].getNameP() << ", у вас нету денег для ставок" << endl;
 			}
 		}
 
-		for (int i = 0; i < n - 1; i++)
+		for (int i = 0; i < players.size() - 1; i++)
 		{
 			cout << players[i].getBet() << " " << players[i + 1].getBet() << endl;
 			if (players[i].getBet() == players[i + 1].getBet())
 			{
 				counter++;
+				cout << counter << endl;
 			}
 		}
 
-		if (counter == n - 1)
+		if (counter == players.size() - 1)
 			break;
 	}
 	return players;
 }
 
-void Croupier::getWin(vector<int> score, vector<int> point, vector <Player> players)
+vector<Player> Croupier::getWin(vector<int> score, vector <Player> players, Croupier c1, vector<Player> playersMain)
 {
 	int win = 0;
 	int winid = 0;
+	int check = 0;
 	vector<int> id;
+
+	if (players.size() == 1)
+	{
+		cout << "Победил " << players[0].getNameP() << "!!!" << endl;
+		players[0].setMoney(getBank());
+		bank = 0;
+		cout << "Ваш счёт: " << players[0].getMoney() << endl;
+		playersMain[0].setMoneyMain(players[0].getMoney());
+		
+		return playersMain;
+	}
 
 	for (int i = 0; i < score.size(); i++)
 	{
 		if (win < score[i])
 		{
+			if (!id.empty())
+			{
+				id.clear();
+			}
+
 			win = score[i];
 			winid = i;
+			id.push_back(winid);
+			cout << win << " " << winid << endl;
 		}
 		
 		else if (win == score[i])
 		{
-			id.push_back(winid);
 			id.push_back(i);
 		}
 	}
 
-	if (win > score[id[0]])
+	for (int i = 0; i < id.size(); i++)
 	{
-		cout << "Победил " << players[id[0]].getNameP() << "!!!" << endl;
-		players[id[0]].setMoney(getBank());
-		bank = 0;
-		cout << "Ваш счёт: " << players[id[0]].getMoney() << endl;
+		cout << id[i] << endl;
 	}
-
-	else
+	
+	if (!id.empty())
 	{
-		id = getDraw(score, players, id);
-		if (id.size() > 1)
+		if (win > score[id[0]])
 		{
-			bank /= id.size();
-			for (int i = 0; i < id.size(); i++)
-			{
-				players[id[i]].setMoney(bank);
-			}
+			cout << "Победил " << players[winid].getNameP() << "!!!" << endl;
+			players[winid].setMoney(getBank());
 			bank = 0;
+			cout << "Ваш счёт: " << players[winid].getMoney() << endl;
+			cout << endl;
+			playersMain[winid].setMoneyMain(players[winid].getMoney());
+
+			return playersMain;
 		}
 
 		else
 		{
-			cout << "Победил " << players[id[0]].getNameP() << "!!!" << endl;
-			players[id[0]].setMoney(getBank());
-			bank = 0;
-			cout << "Ваш счёт: " << players[id[0]].getMoney() << endl;
-		}
-	}
-}
+			id = getDraw(score, players, id, c1.getDeckCr());
+			
+			if (id.size() > 1)
+			{
+				bank /= id.size();
+				for (int i = 0; i < id.size(); i++)
+				{
+					players[id[i]].setMoney(bank);
+					playersMain[id[i]].setMoneyMain(players[id[i]].getMoney());
+				}
+				bank = 0;
 
-vector<int> Croupier::getDraw(vector<int> score, vector<Player> players, vector <int> id)
-{
-	vector<Cards> cd;
-	vector<Cards> cd1;
-	vector<int> dubl;
+				cout << "Победили игроки: " << endl;
+				for (int j = 0; j < id.size(); j++)
+				{
+					cout << "Игрок " << players[id[j]].getNameP() << endl;
+					cout << "Баланс: " << players[id[j]].getMoney() << endl;
+				}
 
-	if (score[id[0]] > 4)
-	{
-		bank /= id.size();
-		for (int i = 0; i < id.size(); i++)
-		{
-			players[id[i]].setMoney(bank);
+				return playersMain;
+			}
+
+			else
+			{
+				cout << "Победил " << players[id[0]].getNameP() << "!!!" << endl;
+				players[id[0]].setMoney(getBank());
+				bank = 0;
+				cout << "Ваш счёт: " << players[id[0]].getMoney() << endl;
+				playersMain[id[0]].setMoneyMain(players[id[0]].getMoney());
+
+				return playersMain;
+			}
 		}
-		bank = 0;
 	}
 
 	else
 	{
-		for (int i = 0; i < id.size() - 1; i++)
+		cout << "Победил " << players[winid].getNameP() << "!!!" << endl;
+		players[winid].setMoney(getBank());
+		bank = 0;
+		cout << "Ваш счёт: " << players[winid].getMoney() << endl;
+		playersMain[winid].setMoneyMain(players[winid].getMoney());
+
+		return playersMain;
+	}
+}
+
+vector<int> Croupier::getDraw(vector<int> score, vector<Player> players, vector <int> id, vector<Cards> deckCr)
+{
+	vector<Cards> cd;
+	vector<Cards> cd1;
+	int high = 0;
+	int high1 = 0;
+	int n = 0;
+	vector<int> highid;
+	vector<int> dubl;
+
+	if (score[id[0]] > 4)
+	{
+		return id;
+	}
+
+	else
+	{
+		for (int f = 0; f < id.size()-1; f++)
 		{
-			cd = players[id[i]].getDeck();
-			cd1 = players[id[i + 1]].getDeck();
-			
-			// сортировка пузырьком
+			cd = players[id[f]].getDeck();
+			cd1 = players[id[f + 1]].getDeck();
+			cd.insert(cd.end(), deckCr.begin(), deckCr.end());
+			cd1.insert(cd1.end(), deckCr.begin(), deckCr.end());
+
 			for (int i = 0; i < cd.size() - 1; i++)
 			{
 				for (int j = 0; j < cd.size() - i - 1; j++)
 				{
-					if (cd[j].getName() > cd[j + 1].getName())
+					if (cd[j].getName() < cd[j + 1].getName())
 					{
 						iter_swap(cd.begin() + j, cd.begin() + j + 1);
 					}
@@ -752,48 +815,97 @@ vector<int> Croupier::getDraw(vector<int> score, vector<Player> players, vector 
 			{
 				for (int j = 0; j < cd1.size() - i - 1; j++)
 				{
-					if (cd1[j].getName() > cd1[j + 1].getName())
+					if (cd1[j].getName() < cd1[j + 1].getName())
 					{
 						iter_swap(cd1.begin() + j, cd1.begin() + j + 1);
 					}
 				}
 			}
 
-			for (int j = cd.size() - 1; j >= 0; j--)
+			cout << f << " раз" << endl;
+			for (int i = 0; i < cd.size(); i++)
+			{
+				cout << cd[i].getCards() << " ";
+			}
+			cout << endl;
+			cout << f << " раз" << endl;
+			for (int i = 0; i < cd1.size(); i++)
+			{
+				cout << cd1[i].getCards() << " ";
+			}
+			cout << endl;
+
+			for (int j = 0; j < cd.size(); j++)
 			{
 				if (cd[j].getName() < cd1[j].getName())
 				{
+					cout << "1 " << cd[j].getCards() << " " << cd1[j].getCards() << endl;
 					if (!dubl.empty())
 					{
+						id.erase(id.begin() + dubl[0]);
+						id.erase(id.begin() + dubl[1]);
+
 						dubl.clear();
 					}
 
-					id.erase(id.begin() + i);
+					id.erase(id.begin() + f);
+					j += cd.size() - 1 - j;
+					for (int z = 0; z < id.size(); z++)
+					{
+						cout << id[z] << " ";
+					}
+					cout << endl;
+					f--;
 				}
 
 				else if (cd[j].getName() > cd1[j].getName())
 				{
-					if (!dubl.empty())
+					cout << "2 " << cd[j].getCards() << " " << cd1[j].getCards() << endl;
+					id.erase(id.begin() + f + 1);
+					j += cd.size() - 1 - j;
+					for (int z = 0; z < id.size(); z++)
 					{
-						dubl.clear();
+						cout << id[z] << " ";
 					}
+					cout << endl;
+					f--;
+				}
 
-					id.erase(id.begin() + i + 1);
+				else if (cd[j].getName() == cd1[j].getName() && j == cd.size() - 1)
+				{
+					cout << "3 " << cd[j].getCards() << " " << cd1[j].getCards() << endl;
+					dubl.push_back(f);
+					dubl.push_back(f + 1);
 				}
 
 				else if (cd[j].getName() == cd1[j].getName())
 				{
-					dubl.push_back(id[i]);
+					cout << "4 " << cd[j].getCards() << " " << cd1[j].getCards() << endl;
 				}
-			}
 
-			if (dubl.empty())
-			{
-				i = 0;
 			}
-
 		}
+
 	}
 
 	return id;
 }
+
+void Croupier::setMainAllBet()
+{
+	allBet = 50;
+}
+
+void Croupier::newCards()
+{
+	mas.clear();
+}
+
+//void Croupier::setDeck()
+//{
+//	deckCr.push_back(Cards(4, 2));
+//	deckCr.push_back(Cards(4, 3));
+//	deckCr.push_back(Cards(6, 2));
+//	deckCr.push_back(Cards(13, 3));
+//	deckCr.push_back(Cards(14, 3));
+//}

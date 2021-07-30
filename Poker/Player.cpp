@@ -27,6 +27,11 @@ void Player::setMoney(float _money)
 	money += _money;
 }
 
+void Player::setMoneyMain(float _money)
+{
+	money = _money;
+}
+
 vector<Cards> Player::getDeck()
 {
 	return deck;
@@ -41,38 +46,6 @@ void Player::setBet(float a)
 float Player::getBet()
 {
 	return bet;
-}
-
-Player Player::checkBet(int a, Player pl, float allBet)
-{
-	switch (a)
-	{
-	case 1: // Call
-	{
-		pl = Call(pl, allBet);
-	}
-	break;
-
-	case 2: //Raise
-	{
-		pl = Raise(pl, allBet);
-	}
-	break;
-
-	case 3: //Va-bank
-	{
-		pl = VaBank(pl);
-	}
-	break;
-
-	default:
-	{
-		cout << "Такого варианта нет! " << endl;
-	}
-	break;
-	}
-	
-	return pl;
 }
 
 Player Player::Call(Player pl, float allBet)
@@ -125,6 +98,12 @@ Player Player::VaBank(Player pl)
 	return pl;
 }
 
+vector<Player> Player::Fold(vector<Player> players, int i)
+{
+	players.erase(players.begin() + i);
+	return players;
+}
+
 float Player::getMoney()
 {
 	return money;
@@ -139,3 +118,14 @@ vector<Player> Player::clearBet(vector<Player> players)
 
 	return players;
 }
+
+void Player::clearCards(Player player1)
+{
+	deck.clear();
+}
+
+//void Player::setDeckPl()
+//{
+//	deck.push_back(Cards(4, 1));
+//	deck.push_back(Cards(4, 3));
+//}

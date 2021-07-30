@@ -25,10 +25,8 @@ public:
 	int ComboCard(vector<Cards> combo, vector<Cards>deckCr, int a);
 	int checkCombination(vector<Cards>combo); // 1 - колода игрока, 2 - колода крупье, 3 - фаза игры
 	void showCombination(int score);
-	//int Street(vector<Cards> combo);
 	int RoyalFlash(vector<Cards>combo);
 	int CardPair(vector<Cards>combo);
-	int StreetFlash(vector<Cards>combo);
 	int Care(vector<Cards>combo);
 	int FullHous(vector<Cards>combo);
 	int HighCard(vector<Cards>combo);
@@ -37,8 +35,11 @@ public:
 	void setAllBet(vector<Player> players);
 	void clearAllBet();
 	float getAllBet();
-	vector<Player> SetBet1(vector<Player>players, int n, float bet);
-	vector<Player> SetBet2(vector<Player>players, int n, float bet);
-	void getWin(vector<int>score, vector<int>point, vector <Player> players);
-	vector<int> getDraw(vector<int> score, vector <Player> players, vector <int> id);
+	vector<Player> SetBet1(vector<Player>players, int n, int bet);
+	vector<Player> SetBet2(vector<Player>players, int n, int bet);
+	vector<Player> getWin(vector<int>score, vector <Player> players, Croupier c1, vector<Player> playersMain);
+	vector<int> getDraw(vector<int> score, vector <Player> players, vector <int> id, vector<Cards> deckCr);
+	void setMainAllBet();
+	void newCards();
+	//void setDeck(); для debaging-а
 };

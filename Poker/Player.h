@@ -23,13 +23,16 @@ public:
 	void showDeck(); // выводит колоду
 	string getNameP();
 	void setMoney(float _money);
+	void setMoneyMain(float _money);
 	vector<Cards>getDeck();
 	void setBet(float a); // делает ставку
 	float getBet();
-	Player checkBet(int a, Player pl, float allBet);
 	Player Call(Player pl, float allBet);
 	Player Raise(Player pl, float allBet);
-	Player VaBank(Player pl1);
+	Player VaBank(Player pl);
+	vector<Player> Fold(vector<Player> players, int i);
 	float getMoney();
 	vector<Player> clearBet(vector<Player> players);
+	void clearCards(Player player1);
+	//void setDeckPl(); для debuging-а
 };
