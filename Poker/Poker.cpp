@@ -140,6 +140,15 @@ int main()
 
             if (check == 2)
                 break;
+            else
+            {
+                c1.setMainAllBet();
+                c1.newCards();
+                for (int i = 0; i < n; i++)
+                {
+                    playersMain[i].clearCards(playersMain[i]);
+                }
+            }
         }
 
         else
@@ -200,6 +209,15 @@ int main()
                 }
                 if (check == 2)
                     break;
+                else
+                {
+                    c1.setMainAllBet();
+                    c1.newCards();
+                    for (int i = 0; i < n; i++)
+                    {
+                        playersMain[i].clearCards(playersMain[i]);
+                    }
+                }
             }
 
             else

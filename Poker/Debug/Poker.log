@@ -1,1 +1,13 @@
-﻿  Poker.vcxproj -> C:\Users\shepe\source\repos\Poker1\Debug\Poker.exe
+﻿  Poker.cpp
+C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(14,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(68,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(97,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(109,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(157,31): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(163,31): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(175,31): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(226,35): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(232,35): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(244,35): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(23,9): warning C4101: counter: неиспользованная локальная переменная
+  Poker.vcxproj -> C:\Users\shepe\source\repos\Poker1\Debug\Poker.exe
