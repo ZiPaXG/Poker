@@ -225,11 +225,6 @@ int Croupier::RoyalFlash(vector<Cards> combo)
 	int point2 = 0;
 	int sizeVec = combo.size();
 
-	for (int i = 0; i < combo.size(); i++)
-	{
-		cout << combo[i].getCards() << endl;
-	}
-
 	// проверка на одинаковые масти
 	for (int i = 0; i < 1; i++)
 	{
@@ -241,7 +236,7 @@ int Croupier::RoyalFlash(vector<Cards> combo)
 			}
 		}
 	}
-	cout << point1 << endl;
+
 	// проверка на одинаковые значения в роял флеше
 	for (int i = 10; i < 15; i++)
 	{
@@ -251,7 +246,7 @@ int Croupier::RoyalFlash(vector<Cards> combo)
 			point++;
 		}
 	}
-	cout << point << endl;
+
 	// проверка на обычный стрит
 	for (int i = 0; i < 1; i++)
 	{
@@ -263,9 +258,9 @@ int Croupier::RoyalFlash(vector<Cards> combo)
 			}
 		}
 	}
-	cout << point2 << endl;
+
 	// проверка на сам роял флеш
-	if (point == 5 && point == 4)
+	if (point == 5 && point1 == 4)
 	{
 		return 10;
 	}
@@ -549,6 +544,7 @@ vector<Player> Croupier::SetBet1(vector<Player> players, int n, int bet)
 				}
 				break;
 				}
+				cout << endl;
 			}
 
 			else
@@ -559,7 +555,6 @@ vector<Player> Croupier::SetBet1(vector<Player> players, int n, int bet)
 		}
 		for (int i = 0; i < players.size() - 1; i++)
 		{
-			cout << players[i].getBet() << " " << players[i + 1].getBet() << endl;
 			if (players[i].getBet() == players[i + 1].getBet())
 			{
 				counter++;
@@ -645,6 +640,8 @@ vector<Player> Croupier::SetBet2(vector<Player> players, int n, int bet)
 				}
 				break;
 				}
+
+				cout << endl;
 			}
 			
 			else
@@ -655,11 +652,9 @@ vector<Player> Croupier::SetBet2(vector<Player> players, int n, int bet)
 
 		for (int i = 0; i < players.size() - 1; i++)
 		{
-			cout << players[i].getBet() << " " << players[i + 1].getBet() << endl;
 			if (players[i].getBet() == players[i + 1].getBet())
 			{
 				counter++;
-				cout << counter << endl;
 			}
 		}
 
@@ -699,7 +694,6 @@ vector<Player> Croupier::getWin(vector<int> score, vector <Player> players, Crou
 			win = score[i];
 			winid = i;
 			id.push_back(winid);
-			cout << win << " " << winid << endl;
 		}
 		
 		else if (win == score[i])
@@ -708,11 +702,6 @@ vector<Player> Croupier::getWin(vector<int> score, vector <Player> players, Crou
 		}
 	}
 
-	for (int i = 0; i < id.size(); i++)
-	{
-		cout << id[i] << endl;
-	}
-	
 	if (!id.empty())
 	{
 		if (win > score[id[0]])
@@ -822,24 +811,10 @@ vector<int> Croupier::getDraw(vector<int> score, vector<Player> players, vector 
 				}
 			}
 
-			cout << f << " раз" << endl;
-			for (int i = 0; i < cd.size(); i++)
-			{
-				cout << cd[i].getCards() << " ";
-			}
-			cout << endl;
-			cout << f << " раз" << endl;
-			for (int i = 0; i < cd1.size(); i++)
-			{
-				cout << cd1[i].getCards() << " ";
-			}
-			cout << endl;
-
 			for (int j = 0; j < cd.size(); j++)
 			{
 				if (cd[j].getName() < cd1[j].getName())
 				{
-					cout << "1 " << cd[j].getCards() << " " << cd1[j].getCards() << endl;
 					if (!dubl.empty())
 					{
 						id.erase(id.begin() + dubl[0]);
@@ -850,37 +825,23 @@ vector<int> Croupier::getDraw(vector<int> score, vector<Player> players, vector 
 
 					id.erase(id.begin() + f);
 					j += cd.size() - 1 - j;
-					for (int z = 0; z < id.size(); z++)
-					{
-						cout << id[z] << " ";
-					}
 					cout << endl;
 					f--;
 				}
 
 				else if (cd[j].getName() > cd1[j].getName())
 				{
-					cout << "2 " << cd[j].getCards() << " " << cd1[j].getCards() << endl;
 					id.erase(id.begin() + f + 1);
 					j += cd.size() - 1 - j;
-					for (int z = 0; z < id.size(); z++)
-					{
-						cout << id[z] << " ";
-					}
 					cout << endl;
 					f--;
 				}
 
 				else if (cd[j].getName() == cd1[j].getName() && j == cd.size() - 1)
 				{
-					cout << "3 " << cd[j].getCards() << " " << cd1[j].getCards() << endl;
+					//cout << "3 " << cd[j].getCards() << " " << cd1[j].getCards() << endl;
 					dubl.push_back(f);
 					dubl.push_back(f + 1);
-				}
-
-				else if (cd[j].getName() == cd1[j].getName())
-				{
-					cout << "4 " << cd[j].getCards() << " " << cd1[j].getCards() << endl;
 				}
 
 			}

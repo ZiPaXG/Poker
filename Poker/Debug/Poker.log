@@ -1,13 +1,35 @@
-﻿  Poker.cpp
-C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(14,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(68,27): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(97,27): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(109,27): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(157,31): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(163,31): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(175,31): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(226,35): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(232,35): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(244,35): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\shepe\source\repos\Poker1\Poker\Poker.cpp(23,9): warning C4101: counter: неиспользованная локальная переменная
+﻿  Croupier.cpp
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(70,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(72,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(97,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(99,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(140,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(142,24): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(253,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(303,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(305,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(347,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(349,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(376,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(378,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(393,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(395,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(427,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(440,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(454,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(478,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(556,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(575,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(653,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(685,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(726,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(734,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(785,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(792,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(794,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(803,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(805,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(814,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(421): warning C4715: Croupier::CardPair: значение возвращается не при всех путях выполнения
+C:\Users\shepe\source\repos\Poker1\Poker\Croupier.cpp(340): warning C4715: Croupier::Care: значение возвращается не при всех путях выполнения
   Poker.vcxproj -> C:\Users\shepe\source\repos\Poker1\Debug\Poker.exe

@@ -53,7 +53,6 @@ Player Player::Call(Player pl, float allBet)
 	float a = allBet - pl.bet;
 	pl.bet += a;
 	pl.money -= a;
-	cout << pl.bet << " " << pl.money << endl;
 	return pl;
 }
 
